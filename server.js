@@ -9,7 +9,6 @@ const io = require("socket.io")(http);
 /* include express.js & socket.io */
 const inquirer = require("inquirer");
 const open = require("open");
-const TextDecoder = require("text-encoding").TextDecoder;
 
 /* hedera.js */
 const {
