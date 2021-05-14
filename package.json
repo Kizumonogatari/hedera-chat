@@ -1,0 +1,27 @@
+{
+  "name": "hcs-chat",
+  "version": "1.0.0",
+  "description": "Reconstruction of Hashgraph chat demo with SDK 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hedera",
+    "hashgraph",
+    "hbar",
+    "cryptocurrencies",
+    "javascript"
+  ],
+  "author": "Beureu",
+  "license": "ISC",
+  "dependencies": {
+    "@hashgraph/sdk": "^2.0.19",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "inquirer": "^8.0.0",
+    "open": "^8.0.8",
+    "socket.io": "^4.1.0",
+    "text-encoding": "^0.7.0"
+  }
+}
