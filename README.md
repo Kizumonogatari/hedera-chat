@@ -1,7 +1,7 @@
 # Hedera Consensus Service Chat Tutorial
 
 An example web app which demonstrates how you can use decentralized pub-sub messaging on the Hedera Consensus Service.
-It is based on Cooper Kunz example that you can find [here](#) but updated for the version 2 of the Hedera-js SDK.
+It is based on Cooper Kunz example that you can find [here](https://github.com/hashgraph/hedera-hcs-chat-js) but updated for the version 2 of the Hedera-js SDK.
 
 ### Built With
 
