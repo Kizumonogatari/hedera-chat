@@ -1,16 +1,17 @@
-require("dotenv").config();         // Access to the .env
+/* configure access to our .env */
+require("dotenv").config();
 
-const express = require("express"); // Including express.js
+const express = require("express");
 const app = express()
 const http = require("http").createServer(app);
-const io = require("socket.io")(http); // Including socket.io
+const io = require("socket.io")(http);
 
-// Include other packages
+/* include express.js & socket.io */
 const inquirer = require("inquirer");
 const open = require("open");
 const TextDecoder = require("text-encoding").TextDecoder;
 
-// Setting up hedera.js
+/* hedera.js */
 const {
     Client,
     TopicMessageSubmitTransaction,
@@ -19,21 +20,21 @@ const {
     TopicMessageQuery
 } = require("@hashgraph/sdk");
 
-// Utilities
+/* utilities */
 const questions = require("./utils.js").initQuestions;
 const UInt8ToString = require("./utils.js").UInt8ToString;
 const secondsToDate = require("./utils.js").secondsToDate;
 const log = require("./utils.js").handleLog;
 const sleep = require("./utils.js").sleep;
 
-
+/* init variables */
 const specialChar = "ℏ";
 var operatorAccount = "";
 var client = Client.forTestnet();
 var topicId = "";
 var logStatus = "default";
 
-// Configuration
+/* configure our env based on prompted input */
 async function init() {
     inquirer.prompt(questions).then(async function(answers) {
         try {
@@ -71,9 +72,10 @@ function runChat() {
     })
 }
 
-init();
+init(); // process arguments & handoff to runChat()
 
-
+/* helper hedera functions */
+/* have feedback, questions, etc.? please feel free to file an issue! */
 async function sendHCSMessage(msg) {
     try {
         await new TopicMessageSubmitTransaction({
@@ -114,7 +116,7 @@ async function createNewTopic() {
         const transaction = new TopicCreateTransaction();
         const txResponse = await transaction.execute(client);
         log("TopicCreateTransaction()", `submitted tx ${txResponse}`, logStatus);
-        await sleep(3000);
+        await sleep(3000);  // wait until Hedera reaches consensus
         const receipt = await txResponse.getReceipt(client);
         const newTopicId = receipt.topicId;
         log("TopicCreateTransaction()", `success! new topic ${newTopicId}`, logStatus);
@@ -125,7 +127,7 @@ async function createNewTopic() {
     }
 }
 
-// Helper init functions
+/* helper init functions */
 function configureAccount() {
     try {
         log("init()", "using default .env config", logStatus);
